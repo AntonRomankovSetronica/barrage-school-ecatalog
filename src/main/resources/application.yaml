@@ -1,4 +1,7 @@
+logging:
+  level:
+    net.barrage.school.java.ecatalog: TRACE
 
 ecatalog:
   products:
-    source-path: /home/kalmar/Documents/barrage-school-ecatalog/src/main/resources/static/products.json
+    source-path: src/main/resources/static/products.json
