@@ -32,12 +32,12 @@ But back-end is here!
 * Open it in Idea and run
     * `Ctrl-Shift-A` - `Execute Gradle Task` - `gradle bootRun`
     * Check you can open http://localhost:8080/e-catalog/api/v1/products
-* Install Postman and import following collection
+* Install [Postman](https://www.postman.com/downloads/) and import following collection
   ```
   https://api.postman.com/collections/28483684-b2d6b745-da61-479d-a3ae-45aa460184a5?access_key=PMAT-01HEZ63EZ9TA1N7HKQBTSD9KGQ
   ```
     * Try `List All Products`
-* For this task you need to create a new branch `TASK-1` and do following things:
+* For this task you will need to create a new branch `TASK-1` and to do following things:
     * Read carefully everything you have in `src/main/**` and `*.gradle` and try to understand.
       Everywhere you have any doubts or questions
       on what is going on - leave a text comment right in code, e.g:
