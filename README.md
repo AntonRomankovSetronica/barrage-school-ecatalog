@@ -16,7 +16,7 @@ So he gave you just a [json file](src/main/resources/static/products.json) of th
 and promised to send updates every week via e-mail.
 
 And here is what you've done...
-Put a pressure on your imagination and think of some good front-end which we don't really have :)
+Put pressure on your imagination and think of some good front-end which we don't really have :)
 
 But the back-end is here!
 
@@ -24,14 +24,14 @@ But the back-end is here!
 
 * Install [IntelliJ IDEA](https://www.jetbrains.com/idea/download)
   and [Java 17 SDK](https://www.jetbrains.com/help/idea/sdk.html)
-* Fork from this project to your private one and open access to your
+* Fork from this project into your private one and open access to your
   mentor ([AntonRomankovSetronica](https://github.com/AntonRomankovSetronica))
     * How to fork - https://docs.github.com/en/get-started/quickstart/fork-a-repo
     * How to open
       access - https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository
 * Open it in Idea and run
     * `Ctrl-Shift-A` - `Execute Gradle Task` - `gradle bootRun`
-    * Check you can open http://localhost:8080/e-catalog/api/v1/products
+    * Check if you can open http://localhost:8080/e-catalog/api/v1/products
 * Install [Postman](https://www.postman.com/downloads/) and import following collection
   ```
   https://api.postman.com/collections/28483684-b2d6b745-da61-479d-a3ae-45aa460184a5?access_key=PMAT-01HEZ63EZ9TA1N7HKQBTSD9KGQ
