@@ -52,4 +52,4 @@ But the back-end is here!
       ```
       http://localhost:8080/e-catalog/api/v1/products/search?q=text
       ```
-    * Create MR and send it to your mentor. He will review your code and go through your comments.
+    * Create MR and send it to your mentor. He will review it and go through your comments.

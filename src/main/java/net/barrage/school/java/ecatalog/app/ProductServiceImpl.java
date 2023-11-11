@@ -1,6 +1,7 @@
 package net.barrage.school.java.ecatalog.app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @Service
 public class ProductServiceImpl implements ProductService {
 
+    // FYI - https://www.baeldung.com/jackson-object-mapper-tutorial
     private final ObjectMapper objectMapper;
 
     @Value("${ecatalog.products.source-path}")
