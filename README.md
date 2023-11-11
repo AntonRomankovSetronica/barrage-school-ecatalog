@@ -10,15 +10,15 @@ Imagine you is a student in CS department... and you have an uncle from some far
 He has his own business, he produces and sells a lot of products of his farm:
 cheese, meet, eggs, vegetables, fruits, wine & etc. And he wants to grow up and increase his sells.
 
-He's remembered his smart nephew and asked to write a modern website with e-catalog of his products.
-His is a smart uncle too, but bit old and was able to learn how to work only in raw text editor.
-So he gave you just a [json file](src/main/resources/static/products.json) of his products
+He's remembered smart nephew and asked you to write a modern website with e-catalog of his products.
+He is a smart uncle too, but a bit old and was able to learn how to work only in raw text editor.
+So he gave you just a [json file](src/main/resources/static/products.json) of the products
 and promised to send updates every week via e-mail.
 
 And here is what you've done...
 Put a pressure on your imagination and think of some good front-end which we don't really have :)
 
-But back-end is here!
+But the back-end is here!
 
 ### What to do?
 
@@ -40,14 +40,14 @@ But back-end is here!
 * For this task you will need to create a new branch `TASK-1` and to do following things:
     * Read carefully everything you have in `src/main/**` and `*.gradle` and try to understand.
       Everywhere you have any doubts or questions
-      on what is going on - leave a text comment right in code, e.g:
+      on what is going on - leave a text comment right in the code, e.g:
       ```java
       public static void main(String[] args) {
           // Wtf is this? Magic?
           SpringApplication.run(ECatalogApplication.class, args);
       }
       ```
-    * Implement a search
+    * Implement following search
       API - [ProductController::searchProducts](src/main/java/net/barrage/school/java/ecatalog/web/ProductController.java)
       ```
       http://localhost:8080/e-catalog/api/v1/products/search?q=text
