@@ -37,6 +37,7 @@ But the back-end is here!
   https://api.postman.com/collections/28483684-b2d6b745-da61-479d-a3ae-45aa460184a5?access_key=PMAT-01HEZ63EZ9TA1N7HKQBTSD9KGQ
   ```
     * Try `List All Products`
+    * Try `Search All Products`, it should not work and should fail with 500
 * For this task you will need to create a new branch `TASK-1` and to do following things:
     * Read carefully everything you have in `src/main/**` and `*.gradle` and try to understand.
       Everywhere you have any doubts or questions
