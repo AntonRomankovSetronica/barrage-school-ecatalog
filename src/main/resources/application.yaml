@@ -1,0 +1,4 @@
+
+ecatalog:
+  products:
+    source-path: /home/kalmar/Documents/barrage-school-ecatalog/src/main/resources/static/products.json
