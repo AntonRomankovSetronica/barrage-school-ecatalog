@@ -1,6 +1,6 @@
 logging:
   level:
-    net.barrage.school.java.ecatalog: TRACE
+    net.barrage.school.java.ecatalog: DEBUG
 
 ecatalog:
   products:
