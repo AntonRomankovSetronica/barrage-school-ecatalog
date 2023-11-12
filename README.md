@@ -2,6 +2,22 @@
 
 Educational Project, Barrage's Java School
 
+## Task 2
+
+Uncle is really proud of his site! He has shown it to all his neighbours and friends.
+
+### What to do?
+
+* Now instead of one local file in one format you gonna have 3 cloud links to files in 3 different formats: json, xml,
+  xlsx. Think of it!
+    * How to organise your code to be able to deal with all these 3 formats? What to do if in some nearest future you
+      will be needed to support more formats?
+    * Are there any libraries which can work with docx, xml? We don't want to invent a wheel. We want as less code as
+      only possible.
+    * Can [common design patterns](https://refactoring.guru/design-patterns/catalog) help you anyhow?
+    * How do you think the configuration of your program should look like now?
+      * 
+
 ## Task 1
 
 Let's begin with some business story :)
