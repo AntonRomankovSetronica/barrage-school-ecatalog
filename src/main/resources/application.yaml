@@ -1,3 +1,7 @@
+#Does this here work like .env in javascript?
+#I see that we are using "${ecatalog.products.source-path}" in Implementation,
+#so I'm wondering if that's the case here?
+
 logging:
   level:
     net.barrage.school.java.ecatalog: DEBUG
@@ -5,3 +9,4 @@ logging:
 ecatalog:
   products:
     source-path: src/main/resources/static/products.json
+
