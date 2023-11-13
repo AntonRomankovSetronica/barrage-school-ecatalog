@@ -37,7 +37,6 @@ So now u will have 3 sources:
     * Google them
     * Discuss everything again and finalize ur plan
 * Create `TASK-2` branch, write your code and send to the mentor.
-    * Work together with mentor on his comments.
 
 ## Task 1
 
