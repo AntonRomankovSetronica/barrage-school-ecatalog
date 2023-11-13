@@ -22,7 +22,7 @@ public class ProductServiceImpl implements ProductService {
     // FYI - https://www.baeldung.com/jackson-object-mapper-tutorial
     private final ObjectMapper objectMapper;
 
-    @Value("${ecatalog.products.source-path}")
+    @Value("${ecatalog.products.source-path}") // found in resources/application.yaml
     private File productsSourceFile;
 
     @SneakyThrows
@@ -30,6 +30,18 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> listProducts() {
         return objectMapper.readValue(productsSourceFile, SourceProductList.class).stream()
                 .map(sourceProduct -> convert(sourceProduct))
+                .toList();
+    }
+
+    @SneakyThrows
+    @Override
+    public List<Product> searchProducts(String query) {
+        return objectMapper.readValue(productsSourceFile, SourceProductList.class).stream()
+                .filter(sourceProduct -> {
+                    var q = query.trim().toLowerCase();
+                    return sourceProduct.getName().toLowerCase().contains(q) || sourceProduct.getNotes().toLowerCase().contains(q);
+                })
+                .map(sourceProduct -> convert(sourceProduct)) // is it better to use filter + mapping or is it better to use function like reduce to create new list directly?
                 .toList();
     }
 
