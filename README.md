@@ -11,12 +11,19 @@ Uncle is really proud of his site! He has shown it to all his neighbours and fri
 * Now instead of one local file in one format you gonna have 3 cloud links to files in 3 different formats: json, xml,
   xlsx. Think of it!
     * How to organise your code to be able to deal with all these 3 formats? What to do if in some nearest future you
-      will be needed to support more formats?
+      will need to support more formats?
     * Are there any libraries which can work with docx, xml? We don't want to invent a wheel. We want as less code as
       only possible.
     * Can [common design patterns](https://refactoring.guru/design-patterns/catalog) help you anyhow?
-    * How do you think the configuration of your program should look like now?
-      * 
+    * How do you think the configuration of your product sources should look like now?
+        * Check the [old variant](src/main/resources/application.yaml)
+        * Suggest something new. Keep in mind that the list of sources and formats can grow.
+* Without writing anything discuss your ideas with your team and mentor.
+    * Find uncovered questions
+    * Google them
+    * Discuss everything again and finalize ur plan
+* Create `TASK-2` branch, write your code and send to the mentor.
+    * Work together with mentor on his comments.
 
 ## Task 1
 
