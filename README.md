@@ -2,6 +2,42 @@
 
 Educational Project, Barrage's Java School
 
+## Task 2
+
+Uncle is really proud of his site! He has shown it to all his neighbours and friends. Bob and John are also farmers from
+the same village. They've been thinking of similar catalog for quite a long time, but business takes all their time.
+They always put it off until later and now ask ur uncle just to publish their products in the same catalog.
+
+You agreed, but remembering the sync process, asked them to put their lists to cloud in same format. But these guys are
+old, to old for this modern stuff... So they only manage to put their files only to Dropbox. Converting - it's something
+they don't even understand in theory :)
+
+So now u will have 3 sources:
+
+- https://www.dropbox.com/scl/fi/mhq4vmv42x1hy5k430ae3/products.json?rlkey=00w6n2cfjk8p5wwizz6c4tckr&dl=0
+- https://www.dropbox.com/scl/fi/rxime4x4tvzxoqvts5g4d/vegetables.xlsx?rlkey=7mrjxnnuqrxygmmi79di5klgl&dl=0
+- https://www.dropbox.com/scl/fi/wbbsxcx6mh58iood031qo/wines.xml?rlkey=x7dmdsnv0gjvalskxwstlxjlr&dl=0
+
+### What to do?
+
+* Now instead of one local file in one format you gonna have 3 cloud links to files in 3 different formats: json, xml,
+  xlsx. Think of it!
+    * How to organise your code to be able to deal with all these 3 formats? What to do if in some nearest future you
+      will need to support more formats?
+    * Are there any libraries which can work with docx, xml? We don't want to invent a wheel. We want as less code as
+      only possible.
+    * Can [common design patterns](https://refactoring.guru/design-patterns/catalog) help you anyhow?
+    * How do you think the configuration of your product sources should look like now?
+        * Check the [old variant](src/main/resources/application.yaml)
+        * Suggest something new. Keep in mind that the list of sources and formats can grow.
+    * Read about [@ConfigurationProperties](https://www.baeldung.com/configuration-properties-in-spring-boot). It may
+      help u!
+* Without writing anything discuss your ideas with your team and mentor.
+    * Find uncovered questions
+    * Google them
+    * Discuss everything again and finalize ur plan
+* Create `TASK-2` branch, write your code and send to the mentor.
+
 ## Task 1
 
 Let's begin with some business story :)
