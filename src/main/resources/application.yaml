@@ -1,6 +1,7 @@
 logging:
   level:
     net.barrage.school.java.ecatalog: DEBUG
+    # is it possible to explain this logging in more details later, about how it works, and why is it here?
 
 ecatalog:
   products:

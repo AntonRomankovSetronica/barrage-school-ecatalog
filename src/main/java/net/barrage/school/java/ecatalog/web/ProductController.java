@@ -33,7 +33,8 @@ public class ProductController {
     public List<Product> searchProducts(
             @RequestParam("q") String query
     ) {
-        // TODO Implement a search method which filters products by having q in it's name or description
-        throw new UnsupportedOperationException("Search is not yet implemented :(");
+        var products = productService.searchProducts(query);
+        log.trace("searchProducts -> {}", products);
+        return products;
     }
 }

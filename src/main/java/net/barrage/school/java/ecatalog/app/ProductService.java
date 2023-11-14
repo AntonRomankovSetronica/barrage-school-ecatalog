@@ -10,4 +10,9 @@ public interface ProductService {
      * List all available products
      */
     List<Product> listProducts();
+
+    /**
+     * List all available products
+     */
+    List<Product> searchProducts(String query);
 }
