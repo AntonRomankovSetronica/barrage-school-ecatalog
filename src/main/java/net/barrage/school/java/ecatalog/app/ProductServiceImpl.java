@@ -1,9 +1,7 @@
 package net.barrage.school.java.ecatalog.app;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.TypeFactory;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import net.barrage.school.java.ecatalog.model.Product;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,22 +13,32 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Service
 public class ProductServiceImpl implements ProductService {
 
     // FYI - https://www.baeldung.com/jackson-object-mapper-tutorial
     private final ObjectMapper objectMapper;
+    private final List<ProductSource> productSources;
 
-    @Value("${ecatalog.products.source-path}")
-    private File productsSourceFile;
+//    @Value("${ecatalog.products.source-path}")
+//    private File productsSourceFile;
+
+    public ProductServiceImpl(
+            ObjectMapper objectMapper,
+            List<ProductSource> productSources) {
+        this.objectMapper = objectMapper;
+        this.productSources = productSources;
+    }
 
     @SneakyThrows
     @Override
     public List<Product> listProducts() {
-        return objectMapper.readValue(productsSourceFile, SourceProductList.class).stream()
-                .map(sourceProduct -> convert(sourceProduct))
-                .toList();
+        var result = new ArrayList<Product>();
+        for (var ps : productSources) {
+            result.addAll(ps.getProducts());
+        }
+        return result;
     }
 
     private Product convert(SourceProduct sourceProduct) {
