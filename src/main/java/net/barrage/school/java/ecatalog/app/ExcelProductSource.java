@@ -52,31 +52,31 @@ public class ExcelProductSource implements ProductSource {
             InputStream inputStream = url.openStream();
             Workbook workbook = new XSSFWorkbook(inputStream);
 
-                Sheet sheet = workbook.getSheetAt(0); // Assuming the data is in the first sheet
+            Sheet sheet = workbook.getSheetAt(0); // Assuming the data is in the first sheet
 
-                Iterator<Row> iterator = sheet.iterator();
-                List<Product> productList = new ArrayList<>();
+            Iterator<Row> iterator = sheet.iterator();
+            List<Product> productList = new ArrayList<>();
 
-                while (iterator.hasNext()) {
-                    Row currentRow = iterator.next();
-                    if (currentRow.getRowNum() == 0) {
-                        // Skip header row
-                        continue;
-                    }
-
-                    Product product = new Product();
-                    product.setName(currentRow.getCell(0).getStringCellValue());
-                    product.setImage(currentRow.getCell(1).getStringCellValue());
-                    product.setId(UUID.randomUUID());
-                    product.setDescription(null);
-                    product.setPrice(Double.parseDouble(currentRow.getCell(4).getStringCellValue()));
-
-                    // Add the product to the list
-                    productList.add(product);
+            while (iterator.hasNext()) {
+                Row currentRow = iterator.next();
+                if (currentRow.getRowNum() == 0) {
+                    // Skip header row
+                    continue;
                 }
 
-                workbook.close();
-                return productList;
+                Product product = new Product();
+                product.setName(currentRow.getCell(0).getStringCellValue());
+                product.setImage(currentRow.getCell(1).getStringCellValue());
+                product.setId(UUID.randomUUID());
+                product.setDescription(null);
+                product.setPrice(Double.parseDouble(currentRow.getCell(4).getStringCellValue()));
+
+                // Add the product to the list
+                productList.add(product);
+            }
+
+            workbook.close();
+            return productList;
 
             } catch (Exception e1) {
             log.warn("Oops!", e1);
