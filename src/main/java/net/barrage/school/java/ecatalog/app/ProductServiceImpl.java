@@ -21,9 +21,6 @@ public class ProductServiceImpl implements ProductService {
     private final ObjectMapper objectMapper;
     private final List<ProductSource> productSources;
 
-//    @Value("${ecatalog.products.source-path}")
-//    private File productsSourceFile;
-
     public ProductServiceImpl(
             ObjectMapper objectMapper,
             List<ProductSource> productSources) {
@@ -39,28 +36,5 @@ public class ProductServiceImpl implements ProductService {
             result.addAll(ps.getProducts());
         }
         return result;
-    }
-
-    private Product convert(SourceProduct sourceProduct) {
-        var product = new Product();
-        product.setId(UUID.randomUUID());
-        product.setName(sourceProduct.getName());
-        product.setDescription(sourceProduct.getNotes());
-        product.setImage(Optional.ofNullable(sourceProduct.productMedia)
-                .flatMap(media -> media.stream().findFirst())
-                .orElse(null));
-        product.setPrice(sourceProduct.getPrice());
-        return product;
-    }
-
-    static class SourceProductList extends ArrayList<SourceProduct> {
-    }
-
-    @Data
-    static class SourceProduct {
-        private String name;
-        private String notes;
-        private List<String> productMedia;
-        private double price;
     }
 }
