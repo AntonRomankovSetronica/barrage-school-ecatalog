@@ -1,70 +1,40 @@
 package net.barrage.school.java.ecatalog.app;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.TypeFactory;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import net.barrage.school.java.ecatalog.model.Product;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Service
 public class ProductServiceImpl implements ProductService {
+    private final List<ProductSource> productSources;
 
-    // FYI - https://www.baeldung.com/jackson-object-mapper-tutorial
-    private final ObjectMapper objectMapper;
-
-    @Value("${ecatalog.products.source-path}") // found in resources/application.yaml
-    private File productsSourceFile;
+    public ProductServiceImpl(
+            List<ProductSource> productSources) {
+        this.productSources = productSources;
+    }
 
     @SneakyThrows
     @Override
     public List<Product> listProducts() {
-        return objectMapper.readValue(productsSourceFile, SourceProductList.class).stream()
-                .map(sourceProduct -> convert(sourceProduct))
-                .toList();
+        var result = new ArrayList<Product>();
+        for (var ps : productSources) {
+            result.addAll(ps.getProducts());
+        }
+        return result;
     }
 
     @SneakyThrows
     @Override
     public List<Product> searchProducts(String query) {
-        return objectMapper.readValue(productsSourceFile, SourceProductList.class).stream()
+        return listProducts().stream()
                 .filter(sourceProduct -> {
                     var q = query.trim().toLowerCase();
-                    return sourceProduct.getName().toLowerCase().contains(q) || sourceProduct.getNotes().toLowerCase().contains(q);
+                    return sourceProduct.getName().toLowerCase().contains(q) || sourceProduct.getDescription().toLowerCase().contains(q);
                 })
-                .map(sourceProduct -> convert(sourceProduct)) // is it better to use filter + mapping or is it better to use function like reduce to create new list directly?
                 .toList();
-    }
-
-    private Product convert(SourceProduct sourceProduct) {
-        var product = new Product();
-        product.setId(UUID.randomUUID());
-        product.setName(sourceProduct.getName());
-        product.setDescription(sourceProduct.getNotes());
-        product.setImage(Optional.ofNullable(sourceProduct.productMedia)
-                .flatMap(media -> media.stream().findFirst())
-                .orElse(null));
-        product.setPrice(sourceProduct.getPrice());
-        return product;
-    }
-
-    static class SourceProductList extends ArrayList<SourceProduct> {
-    }
-
-    @Data
-    static class SourceProduct {
-        private String name;
-        private String notes;
-        private List<String> productMedia;
-        private double price;
     }
 }
