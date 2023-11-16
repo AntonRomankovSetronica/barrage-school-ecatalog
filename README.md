@@ -53,6 +53,8 @@ So now u will have 3 sources:
         * Suggest something new. Keep in mind that the list of sources and formats can grow.
     * Read about [@ConfigurationProperties](https://www.baeldung.com/configuration-properties-in-spring-boot). It may
       help u!
+    * Read about [@Configuration](https://www.digitalocean.com/community/tutorials/spring-configuration-annotation). You
+      will need it to create a bean factory for your new product sources!
 * Without writing anything discuss your ideas with your team and mentor.
     * Find uncovered questions
     * Google them
