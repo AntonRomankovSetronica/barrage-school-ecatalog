@@ -2,6 +2,28 @@
 
 Educational Project, Barrage's Java School
 
+## Task 3
+
+Uncle and his friends are happy for now... It's time to think about tech dept :)
+
+You are from CS department and realize that reading products from dropbox on every request is not what we would call
+performance. Even reading it from local file is too expensive.
+
+You want to cache all the products in memory and invalidate them from time to time.
+
+And you decide to start covering your code with tests.
+
+### What to do?
+
+* Think on config change. What extra configs will be needed?
+* How do you plan to schedule cache invalidation?
+    * Consider [@Scheduled](https://www.baeldung.com/spring-scheduled-tasks) for invalidation job
+* Try to write more tests
+  in [ProductServiceImplTest](src/test/java/net/barrage/school/java/ecatalog/app/ProductServiceImplTest.java)
+    * We gonna use [JUnit5](https://junit.org/junit5/docs/current/user-guide/) in our project
+    * Write tests to cover search and your changes about product sources
+    * Write more test classes if you need different [profile](src/test/resources/application-fake.yaml)
+
 ## Task 2
 
 Uncle is really proud of his site! He has shown it to all his neighbours and friends. Bob and John are also farmers from

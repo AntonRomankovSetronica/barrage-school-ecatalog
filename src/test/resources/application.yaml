@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: E-Catalog
+
+logging:
+  level:
+    net.barrage.school.java.ecatalog: DEBUG
