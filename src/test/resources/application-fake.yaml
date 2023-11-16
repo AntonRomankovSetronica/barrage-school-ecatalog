@@ -1,0 +1,6 @@
+ecatalog:
+  products:
+    sources:
+      - name: Fake
+        format: fake
+        url: fake

@@ -22,6 +22,7 @@ And you decide to start covering your code with tests.
   in [ProductServiceImplTest](src/test/java/net/barrage/school/java/ecatalog/app/ProductServiceImplTest.java)
     * We gonna use [JUnit5](https://junit.org/junit5/docs/current/user-guide/) in our project
     * Write tests to cover search and your changes about product sources
+    * Write more test classes if you need different [profile](src/test/resources/application-fake.yaml)
 
 ## Task 2
 
