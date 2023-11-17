@@ -20,7 +20,7 @@ schema.
   products to db.
 * You will need new CRUD Rest API, e.g. `CrudProductController.java`
     * And new mappings, e.g. `@PostMapping`, `@PutMapping` &
-      etc ([brief example](https://www.javadevjournal.com/spring-boot/spring-boot-rest-example/)
+      etc ([brief example](https://www.javadevjournal.com/spring-boot/spring-boot-rest-example/))
 * Think on how to migrate existed products to db
 * Think on how to keep products R/O for merchants who aren't ready to migrate to crud. And think on how to keep them
   syncing with db.
