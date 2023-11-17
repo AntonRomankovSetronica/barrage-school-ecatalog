@@ -18,9 +18,18 @@ schema.
 * Run postgres locally using [dcoker-compose](docker-compose.yaml)
 * Consider [the example](src/test/java/net/barrage/school/java/ecatalog/app/HibernateExampleTest.java) of how to copy
   products to db.
-* You will need new CRUD Rest API, e.g. `CrudProductController.java`
+* You will need new CRUD Rest API, e.g. `CrudProductController`
     * And new mappings, e.g. `@PostMapping`, `@PutMapping` &
       etc ([brief example](https://www.javadevjournal.com/spring-boot/spring-boot-rest-example/))
+    * What REST API calls will look like? Is following enough?
+        * GET `/e-catalog/api/v1/merchants` - List merchants
+        * GET `/e-catalog/api/v1/merchants/{merchantId}` - Get merchant by id
+        * GET `/e-catalog/api/v1/merchants/{merchantId}/products` - List products from selected merchant
+        * GET `/e-catalog/api/v1/products` - List all products
+        * POST `/e-catalog/api/v1/products` - Create product
+        * GET `/e-catalog/api/v1/products/{productId}` - Get product by id
+        * PUT `/e-catalog/api/v1/products/{productId}` - Update product by id
+        * DELETE `/e-catalog/api/v1/products/{productId}` - Delete product by id
 * Think on how to migrate existed products to db
 * Think on how to keep products R/O for merchants who aren't ready to migrate to crud. And think on how to keep them
   syncing with db.
