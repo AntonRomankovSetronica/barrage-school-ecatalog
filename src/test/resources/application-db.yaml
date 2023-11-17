@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost/postgres
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: example
+
+ecatalog:
+  products:
+    sources:
+      - name: Uncle
+        format: json
+        url: https://www.dropbox.com/scl/fi/mhq4vmv42x1hy5k430ae3/products.json?rlkey=00w6n2cfjk8p5wwizz6c4tckr&dl=1
