@@ -2,6 +2,30 @@
 
 Educational Project, Barrage's Java School
 
+## Task 4
+
+Business of your uncle and his friends goes really well. With new ads through your catalog they begin to have way more
+orders. They got more money and now want to extend the functionality. First of all, they want to have an admin part, so
+it will be possible to manage their products from it (CRUD).
+
+So, now you need to introduce some database and provide CRUD interface for it!
+
+Unfortunately not all of his friends are ready to migrate to this new CRUD. Guy with XML want to continue with current
+schema.
+
+### What to do?
+
+* Run postgres locally using [dcoker-compose](docker-compose.yaml)
+* Consider [the example](src/test/java/net/barrage/school/java/ecatalog/app/HibernateExampleTest.java) of how to copy
+  products to db.
+* You will need new CRUD Rest API, e.g. `CrudProductController.java`
+    * And new mappings, e.g. `@PostMapping`, `@PutMapping` &
+      etc ([brief example](https://www.javadevjournal.com/spring-boot/spring-boot-rest-example/))
+* Think on how to migrate existed products to db
+* Think on how to keep products R/O for merchants who aren't ready to migrate to crud. And think on how to keep them
+  syncing with db.
+* Implement new changes. And don't forget to cover them with tests.
+
 ## Task 3
 
 Uncle and his friends are happy for now... It's time to think about tech dept :)
