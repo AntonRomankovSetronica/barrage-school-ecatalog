@@ -2,6 +2,11 @@
 
 Educational Project, Barrage's Java School
 
+## Task 5
+
+As we're going to have admin part - we need to provide some security from our API. We don't want anybody will be able to
+use it.
+
 ## Task 4
 
 Business of your uncle and his friends goes really well. With new ads through your catalog they begin to have way more
