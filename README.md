@@ -5,9 +5,9 @@ Educational Project, Barrage's Java School
 ## Task 5
 
 As we're going to have admin part - so we need to provide some security to our API. We don't want anybody will be able
-to use it.
+to use it unauthorized.
 
-There is a bunch of different security flows, however we're going to implement only 4 following:
+There is a bunch of different security flows, however we're going to implement only following 4:
 
 * Bearer
 * Basic
