@@ -3,7 +3,7 @@ package net.barrage.school.java.ecatalog.web;
 import lombok.extern.slf4j.Slf4j;
 import net.barrage.school.java.ecatalog.app.ProductService;
 import net.barrage.school.java.ecatalog.model.Product;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,9 +25,12 @@ public class ProductController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_SYSTEM_ADMIN')")
     public List<Product> listProducts() {
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+        log.info("user = {}", authentication);
         var products = productService.listProducts();
-        log.debug("listProducts -> {}", products);
+//        log.debug("listProducts -> {}", products);
         return products;
     }
 
