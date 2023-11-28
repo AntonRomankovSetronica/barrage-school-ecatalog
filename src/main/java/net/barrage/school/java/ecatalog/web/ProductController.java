@@ -3,6 +3,8 @@ package net.barrage.school.java.ecatalog.web;
 import lombok.extern.slf4j.Slf4j;
 import net.barrage.school.java.ecatalog.app.ProductService;
 import net.barrage.school.java.ecatalog.model.Product;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,9 +25,12 @@ public class ProductController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_SYSTEM_ADMIN')")
     public List<Product> listProducts() {
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+        log.info("user = {}", authentication);
         var products = productService.listProducts();
-        log.trace("listProducts -> {}", products);
+//        log.debug("listProducts -> {}", products);
         return products;
     }
 
@@ -33,7 +38,8 @@ public class ProductController {
     public List<Product> searchProducts(
             @RequestParam("q") String query
     ) {
+        var sec = SecurityContextHolder.getContext();
         // TODO Implement a search method which filters products by having q in it's name or description
-        throw new UnsupportedOperationException("Search is not yet implemented :(");
+        throw new UnsupportedOperationException("Search is not yet implemented :( ");
     }
 }

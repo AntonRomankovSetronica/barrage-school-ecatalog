@@ -2,6 +2,35 @@
 
 Educational Project, Barrage's Java School
 
+## Task 5
+
+As we're going to have admin part - so we need to provide some security to our API. We don't want anybody will be able
+to use it unauthorized.
+
+There is a bunch of different security flows, however we're going to implement only following 4:
+
+* Bearer
+* Basic
+* Form based auth (with storing security context to session)
+* Anonymous
+
+Our goal is to add all these methods to the service, so it will be possible to use all of them in parallel.
+
+### What to do?
+
+* Consider the [example](src/main/java/net/barrage/school/java/ecatalog/config/SecurityConfiguration.java) configuration
+  for Bearer JWT and [docs](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html).
+  Ask your mentor in case of questions.
+  * [Spring boot security arch](https://docs.spring.io/spring-security/reference/servlet/architecture.html)
+  * [Introduction to Spring Security Architecture](https://medium.com/@rasheed99/introduction-on-spring-security-architecture-eb5d7de75a4f)
+* Search for [Basic auth](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/basic.html)
+  and try to add its support.
+* Search for
+  what [session management](https://docs.spring.io/spring-security/reference/servlet/authentication/session-management.html)
+  is. Discuss it with your mentor and try to implement then.
+* Add [anonymous](https://docs.spring.io/spring-security/reference/servlet/authentication/anonymous.html) roles support.
+* Cover every method with a [test](src/test/java/net/barrage/school/java/ecatalog/app/SecurityTest.java)!
+
 ## Task 4
 
 Business of your uncle and his friends goes really well. With new ads through your catalog they begin to have way more
