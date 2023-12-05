@@ -9,6 +9,12 @@ services:
       POSTGRES_PASSWORD: example
     ports:
       - "5432:5432"
+    deploy:
+      resources:
+        # Let's limit cpu for PG to emulate high-load :)
+        limits:
+          cpus: "0.001"
+          memory: "50M"
 
   prometheus:
     image: prom/prometheus:latest
@@ -19,7 +25,5 @@ services:
 
   grafana:
     image: grafana/grafana-oss
-    container_name: grafana
-    restart: unless-stopped
     ports:
       - '3000:3000'
