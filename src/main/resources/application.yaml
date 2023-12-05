@@ -17,6 +17,12 @@ spring:
     username: postgres
     password: example
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+
 logging:
   level:
     net.barrage.school.java.ecatalog: DEBUG

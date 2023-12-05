@@ -2,6 +2,11 @@
 
 Educational Project, Barrage's Java School
 
+## Task 6
+
+
+
+
 ## Task 5
 
 As we're going to have admin part - so we need to provide some security to our API. We don't want anybody will be able

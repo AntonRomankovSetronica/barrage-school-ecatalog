@@ -34,6 +34,7 @@ public class SecurityConfiguration {
         http
                 .csrf(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/actuator/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 // https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html
