@@ -26,7 +26,7 @@ To measure these stats we gonna use following tools:
 * There are list of meters in Micrometer.io lib, try at least following: `Timer`, `Counter`, `Gauge`.
   But will be nice if you try all of them: https://micrometer.io/docs/concepts#_meters
 * Configure Grafana
-    * Login (admin/admin)
+    * Login (http://localhost:3000/ admin/admin)
     * Create source
     * Create a dashboard
     * Add all your metrics as graphics

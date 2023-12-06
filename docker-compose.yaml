@@ -19,7 +19,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     volumes:
-      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+      - "./others/prometheus.yml:/etc/prometheus/prometheus.yml"
     ports:
       - "9090:9090"
 
@@ -27,3 +27,5 @@ services:
     image: grafana/grafana-oss
     ports:
       - '3000:3000'
+#    volumes:
+#      - "./others/grafana:/var/lib/grafana"
