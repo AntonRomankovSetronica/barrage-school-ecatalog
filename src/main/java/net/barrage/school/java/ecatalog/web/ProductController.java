@@ -28,7 +28,7 @@ public class ProductController {
 
     @Getter(value = AccessLevel.PRIVATE, lazy = true)
     private final Counter listProductsCounter = meterRegistry
-            .counter("ecatalog.products.list_counter");
+            .counter("ecatalog.products.listProducts");
 
     @GetMapping
     @PreAuthorize("hasRole('ROLE_SYSTEM_ADMIN')")

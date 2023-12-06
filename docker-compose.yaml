@@ -13,8 +13,8 @@ services:
       resources:
         # Let's limit cpu for PG to emulate high-load :)
         limits:
-          cpus: "0.001"
-          memory: "50M"
+          cpus: "0.04"
+          memory: "150M"
 
   prometheus:
     image: prom/prometheus:latest
