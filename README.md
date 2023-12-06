@@ -20,8 +20,8 @@ To measure these stats we gonna use following tools:
 ### What to do?
 
 * Consider the example:
-    * [Counter](src/main/java/net/barrage/school/java/ecatalog/web/ProductController.java)
-    * [Security config update](src/main/java/net/barrage/school/java/ecatalog/config/SecurityConfiguration.java)
+    * [Counter](src/main/java/net/barrage/school/java/ecatalog/web/ProductController.java#L30)
+    * [Security config update](src/main/java/net/barrage/school/java/ecatalog/config/SecurityConfiguration.java#L38)
     * [Docker compose update](docker-compose.yaml)
 * There are list of meters in Micrometer.io lib, try at least following: `Timer`, `Counter`, `Gauge`.
   But will be nice if you try all of them: https://micrometer.io/docs/concepts#_meters
