@@ -19,7 +19,7 @@ We need to support his idea from backend perspective and introduce several new e
     * Order should keep date/time when it was made.
 * You need to introduce new entity - POS (point of sail).
     * POS should have GEO point (lat, lon).
-    * Merchant can have more than one POS (let say Uncle has one POS right at his farm, and is opening another in
+    * Merchant can have more than one POS (let say Uncle has one POS right at his farm, and is opening another at
       neighbor village).
     * You need a CRUD for POSes (try to make it as simple as only possible)
         * Let it be smth like: `/e-catalog/api/v1/merchants/{merchantId}/pos`
@@ -44,6 +44,7 @@ We need to support his idea from backend perspective and introduce several new e
         * PostGIS ([docker](https://github.com/postgis/docker-postgis), [distance calc example](https://copyprogramming.com/howto/how-can-i-get-distance-between-two-points-on-earth-from-postgis#postgres-calculate-distance-with-postgis))
     * There should be exactly 4 products in every merchant and they should be sorted by popularity in last N days (make
       this N configurable). First product will have the biggest number of orders it involves in during past N days.
+    * Test!
 
 ## Task 6
 
