@@ -4,7 +4,7 @@ version: "3.9"
 services:
 
   pg:
-    image: postgres
+    image: postgis/postgis:11-3.3-alpine
     environment:
       POSTGRES_PASSWORD: example
     ports:

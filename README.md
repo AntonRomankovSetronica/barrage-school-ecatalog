@@ -44,6 +44,7 @@ We need to support his idea from backend perspective and introduce several new e
         * PostGIS ([docker](https://github.com/postgis/docker-postgis), [distance calc example](https://copyprogramming.com/howto/how-can-i-get-distance-between-two-points-on-earth-from-postgis#postgres-calculate-distance-with-postgis))
     * There should be exactly 4 products in every merchant and they should be sorted by popularity in last N days (make
       this N configurable). First product will have the biggest number of orders it involves in during past N days.
+    * Try to fetch all needed data with a single SQL request!
 * Tests!
 
 ## Task 6
