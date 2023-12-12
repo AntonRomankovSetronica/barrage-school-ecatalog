@@ -2,6 +2,38 @@
 
 Educational Project, Barrage's Java School
 
+## Task 6
+
+Business goes well and your uncle now wants to get some stats from his catalog. He wants to know different things:
+
+* How often people list products.
+* How often people list products of particular merchants.
+* How fast legacy sync happens
+* And etc...
+
+To measure these stats we gonna use following tools:
+
+* [Spring Boot Actuator](https://www.baeldung.com/spring-boot-actuators) / [Micrometer.io](https://micrometer.io/docs/concepts#_meters)
+* [Prometheus](https://prometheus.io/)
+* [Grafana](https://grafana.com/)
+
+### What to do?
+
+* Consider the example:
+    * [Counter](src/main/java/net/barrage/school/java/ecatalog/web/ProductController.java#L30)
+    * [Security config update](src/main/java/net/barrage/school/java/ecatalog/config/SecurityConfiguration.java#L38)
+    * [Docker compose update](docker-compose.yaml)
+* There are list of meters in Micrometer.io lib, try at least following: `Timer`, `Counter`, `Gauge`.
+  But will be nice if you try all of them: https://micrometer.io/docs/concepts#_meters
+* Configure Grafana
+    * Login (http://localhost:3000/ admin/admin)
+    * Create source
+    * Create a dashboard
+    * Add all your metrics as graphics
+* Write a test which will create a random load to your app. Let say it will be configurable and will send N requests per
+  minute to some defined endpoint.
+* Run your test and check your dashboard represents load to your app correctly.
+
 ## Task 5
 
 As we're going to have admin part - so we need to provide some security to our API. We don't want anybody will be able
@@ -21,8 +53,8 @@ Our goal is to add all these methods to the service, so it will be possible to u
 * Consider the [example](src/main/java/net/barrage/school/java/ecatalog/config/SecurityConfiguration.java) configuration
   for Bearer JWT and [docs](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html).
   Ask your mentor in case of questions.
-  * [Spring boot security arch](https://docs.spring.io/spring-security/reference/servlet/architecture.html)
-  * [Introduction to Spring Security Architecture](https://medium.com/@rasheed99/introduction-on-spring-security-architecture-eb5d7de75a4f)
+    * [Spring boot security arch](https://docs.spring.io/spring-security/reference/servlet/architecture.html)
+    * [Introduction to Spring Security Architecture](https://medium.com/@rasheed99/introduction-on-spring-security-architecture-eb5d7de75a4f)
 * Search for [Basic auth](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/basic.html)
   and try to add its support.
 * Search for

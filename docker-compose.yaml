@@ -2,9 +2,28 @@
 
 version: "3.9"
 services:
+
   pg:
     image: postgres
     environment:
       POSTGRES_PASSWORD: example
     ports:
       - "5432:5432"
+    deploy:
+      resources:
+        # Let's limit cpu for PG to emulate high-load :)
+        limits:
+          cpus: "0.04"
+          memory: "150M"
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - "./others/prometheus.yml:/etc/prometheus/prometheus.yml"
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana-oss
+    ports:
+      - '3000:3000'
