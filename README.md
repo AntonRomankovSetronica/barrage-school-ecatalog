@@ -22,7 +22,7 @@ We need to support his idea from backend perspective and introduce several new e
     * Merchant can have more than one POS (let say Uncle has one POS right at his farm, and is opening another at
       neighbor village).
     * You need a CRUD for POSes (try to make it as simple as only possible)
-        * Let it be smth like: `/e-catalog/api/v1/merchants/{merchantId}/pos`
+        * Let it be smth like: `/e-catalog/api/v1/merchants/{merchantId}/pos/...`
     * Let say all the story happens somewhere at [one-horse town](https://maps.app.goo.gl/UfZMzzTMEb9hgT7y5). Use points
       from this place for your POSes.
 * For main screen of our mobile app we will need a new endpoint - `/e-catalog/api/v1/mobile/mainscreen`
@@ -41,7 +41,7 @@ We need to support his idea from backend perspective and introduce several new e
     * Mobile app will send customer's coordinates with query params (e.g. `?lat=1.234&lng=5.678`)
     * There should be exactly 3 merchants sorted by nearest POS (merchant who has the nearest POS should be the first &
       etc)
-        * PostGIS ([docker](https://github.com/postgis/docker-postgis), [distance calc example](https://copyprogramming.com/howto/how-can-i-get-distance-between-two-points-on-earth-from-postgis#postgres-calculate-distance-with-postgis))
+        * PostGIS ([extension](https://github.com/postgis/docker-postgis), [distance calc example](https://copyprogramming.com/howto/how-can-i-get-distance-between-two-points-on-earth-from-postgis#postgres-calculate-distance-with-postgis), [docker](docker-compose.yaml#L7))
     * There should be exactly 4 products in every merchant and they should be sorted by popularity in last N days (make
       this N configurable). First product will have the biggest number of orders it involves in during past N days.
     * Try to fetch all needed data with a single SQL request!
