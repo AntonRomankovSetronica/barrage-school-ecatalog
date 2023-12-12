@@ -32,9 +32,15 @@ We need to support his idea from backend perspective and introduce several new e
         "merchants": [
           {
             "name": "M1",
-            "popular-products": [{ "name":  "P1", "image": "img-url"}, ...]
-          },
-          ...
+            "popular-products": [
+              { 
+                "name":  "P1", 
+                "image": "img-url"
+              }
+              // ... more products ordered by popularity
+            ]
+          }
+          // ... more merchants ordered by POS
         ]
       }
       ```
