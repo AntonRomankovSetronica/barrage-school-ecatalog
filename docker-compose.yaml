@@ -27,3 +27,5 @@ services:
     image: grafana/grafana-oss
     ports:
       - '3000:3000'
+    volumes:
+      - "./others/grafana:/var/lib/grafana"
