@@ -2,6 +2,57 @@
 
 Educational Project, Barrage's Java School
 
+## Task 7
+
+Your Uncle goes mad and decide to create a mobile app for his catalog. So people will be able to search and order
+products right from their cell-phones.
+
+We need to support his idea from backend perspective and introduce several new endpoints.
+
+### What to do?
+
+* We need a new endpoint for making orders. Let's skip all this story with payment and say that to make an order we just
+  need to call some POST request. We only gonna fix following:
+    * Every order should contain products from exactly one merchant.
+    * Order should be able to contain multiple products and amounts.
+    * Order should keep info about user who's made it.
+    * Order should keep date/time when it was made.
+* You need to introduce new entity - POS (point of sail).
+    * POS should have GEO point (lat, lon).
+    * Merchant can have more than one POS (let say Uncle has one POS right at his farm, and is opening another at
+      neighbor village).
+    * You need a CRUD for POSes (try to make it as simple as only possible)
+        * Let it be smth like: `/e-catalog/api/v1/merchants/{merchantId}/pos/...`
+    * Let say all the story happens somewhere at [one-horse town](https://maps.app.goo.gl/UfZMzzTMEb9hgT7y5). Use points
+      from this place for your POSes.
+* For main screen of our mobile app we will need a new endpoint - `/e-catalog/api/v1/mobile/mainscreen`
+    * It should have the exactly following structure:
+      ```json
+      {
+        "merchants": [
+          {
+            "name": "M1",
+            "popular-products": [
+              { 
+                "name":  "P1", 
+                "image": "img-url"
+              }
+              // ... more products ordered by popularity
+            ]
+          }
+          // ... more merchants ordered by POS
+        ]
+      }
+      ```
+    * Mobile app will send customer's coordinates with query params (e.g. `?lat=1.234&lng=5.678`)
+    * There should be exactly 3 merchants sorted by nearest POS (merchant who has the nearest POS should be the first &
+      etc)
+        * PostGIS ([extension](https://github.com/postgis/docker-postgis), [distance calc example](https://copyprogramming.com/howto/how-can-i-get-distance-between-two-points-on-earth-from-postgis#postgres-calculate-distance-with-postgis), [docker](docker-compose.yaml#L7))
+    * There should be exactly 4 products in every merchant and they should be sorted by popularity in last N days (make
+      this N configurable). First product will have the biggest number of orders it involves in during past N days.
+    * Try to fetch all needed data with a single SQL request!
+* Tests!
+
 ## Task 6
 
 Business goes well and your uncle now wants to get some stats from his catalog. He wants to know different things:
