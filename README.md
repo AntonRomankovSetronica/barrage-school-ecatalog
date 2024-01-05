@@ -24,7 +24,8 @@ Consider what [Uber H3 Index](https://www.uber.com/blog/h3/) is!
     * Disable [FakeController](src/main/java/net/barrage/school/java/ecatalog/web/FakeController.java) to avoid
       conflicts.
     * Run the test without caching and share your results in the team channel.
-* Implement caching using Redis and Uber H3.
+* Implement caching using [Redis](https://www.baeldung.com/spring-boot-redis-cache)
+  and [Uber H3](https://github.com/uber/h3-java).
     * Make caching feature configurable, so it will be possible to enable or disable it from application properties.
 * Run performance test once again with caching enabled.
     * Share your new results in the team channel. Explain the difference!
