@@ -1,5 +1,6 @@
 package net.barrage.school.java.ecatalog.app;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.SneakyThrows;
 import lombok.ToString;
@@ -39,12 +40,11 @@ public class MainScreenPerformanceTest {
                 .blockLast();
     }
 
-
     Mono<Report> roundTest(int scenarioIndex) {
         Report report = new Report();
         report.setScenarioIndex(scenarioIndex);
 
-        return testForScenario(new Scenario() {
+        return roundTestForScenario(new Scenario() {
             Instant ordersBegin;
             Instant mainScreensBegin;
 
@@ -63,9 +63,10 @@ public class MainScreenPerformanceTest {
                 report.setOrdersDuration(Duration.between(ordersBegin, Instant.now()));
             }
 
+            /* TODO Replace this stub with real order creation request! */
             @Override
-            public Order getOrder(int orderIdx) {
-                return Scenario.super.getOrder(orderIdx);
+            public Order createOrder(int orderIdx) {
+                return Scenario.super.createOrder(orderIdx);
             }
 
             @Override
@@ -83,14 +84,15 @@ public class MainScreenPerformanceTest {
                 report.setMainScreensDuration(Duration.between(mainScreensBegin, Instant.now()));
             }
 
+            /* TODO Replace this stub with real main screen request! */
             @Override
-            public Report getReport() {
-                return report;
+            public MainScreenRequest createMainScreenRequest(int requestIdx) {
+                return Scenario.super.createMainScreenRequest(requestIdx);
             }
 
             @Override
-            public MainScreenRequest getMainScreenRequest(int requestIdx) {
-                return Scenario.super.getMainScreenRequest(requestIdx);
+            public Report getReport() {
+                return report;
             }
         });
     }
@@ -117,11 +119,11 @@ public class MainScreenPerformanceTest {
 
         Report getReport();
 
-        default Order getOrder(int orderIdx) {
+        default Order createOrder(int orderIdx) {
             return new Order(UUID.randomUUID(), List.of());
         }
 
-        default MainScreenRequest getMainScreenRequest(int requestIdx) {
+        default MainScreenRequest createMainScreenRequest(int requestIdx) {
             return new MainScreenRequest(0, 0);
         }
     }
@@ -144,10 +146,10 @@ public class MainScreenPerformanceTest {
 
     /* GENERAL ROUND FLOW */
 
-    Mono<Report> testForScenario(Scenario scenario) {
+    Mono<Report> roundTestForScenario(Scenario scenario) {
         var orders = Flux.fromStream(IntStream.range(0, scenario.getOrders()).boxed())
                 .doFirst(scenario::setOrdersBegin)
-                .map(scenario::getOrder)
+                .map(scenario::createOrder)
                 .flatMap(order -> Mono.fromFuture(makeOrder(order)))
                 .last()
                 .map(last -> {
@@ -156,7 +158,7 @@ public class MainScreenPerformanceTest {
                 });
         var mainScreens = Flux.fromStream(IntStream.range(0, scenario.getMainScreens()).boxed())
                 .doFirst(scenario::setMainScreensBegin)
-                .map(scenario::getMainScreenRequest)
+                .map(scenario::createMainScreenRequest)
                 .flatMap(r -> Mono.fromFuture(requestMainScreen(r)))
                 .last()
                 .map(r -> {
@@ -188,7 +190,10 @@ public class MainScreenPerformanceTest {
             .connectTimeout(Duration.ofSeconds(10))
             .build();
 
+    final ObjectMapper objectMapper = new ObjectMapper();
 
+
+    /* TODO Update this request according to your orders format! */
     CompletableFuture<Order> makeOrder(Order order) {
         var request = HttpRequest.newBuilder()
                 .uri(CREATE_ORDER_URI)
@@ -213,10 +218,28 @@ public class MainScreenPerformanceTest {
                 .GET()
                 .build();
         return httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                .thenApply(response -> {
-                    assertEquals(200, response.statusCode());
-                    return true;
-                });
+                .thenApply(this::checkMainScreenResponse);
+    }
+
+    /* TODO Here is just an example of main screen check. You will have to implement a normal one,
+        depends on payload you will use in the MS response. */
+    private boolean checkMainScreenResponse(HttpResponse<String> response) {
+        try {
+            assertEquals(200, response.statusCode());
+
+            var ms = objectMapper.readTree(response.body());
+            var merchants = ms.get("merchants").elements();
+            int mCount = 0;
+            while (merchants.hasNext()) {
+                var m = merchants.next();
+                mCount++;
+                assertEquals("M" + mCount, m.get("name").asText());
+            }
+            return mCount == 3;
+        } catch (Exception e1) {
+            e1.printStackTrace();
+            return false;
+        }
     }
 
     /* STATS */
