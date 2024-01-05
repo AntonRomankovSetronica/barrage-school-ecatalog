@@ -71,7 +71,7 @@ public class MainScreenPerformanceTest {
 
             @Override
             public int getMainScreens() {
-                return 10_000;
+                return 10_000 * scenarioIndex;
             }
 
             @Override

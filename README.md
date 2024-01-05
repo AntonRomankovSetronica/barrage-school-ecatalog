@@ -7,10 +7,9 @@ Educational Project, Barrage's Java School
 Lots of people begin to use our app, so we face performance issues. Let's try to fight with them using geo-caching!
 
 Consider main screen request from previous task. What is the most computational expensive part there?
-Ordering merchants by distance to customers cell-phones and ordering products by popularity looks quite suspicious.
+Ordering merchants by distance to customers cell-phones and ordering products by popularity look quite suspicious.
 Moreover, if there will be two customers staying 20 meters one from each other - it will be quite possible that they
-will
-get same main screen.
+will get same main screen.
 
 How does it possible to cache main screen and not to calculate it on every request?
 Consider what [Uber H3 Index](https://www.uber.com/blog/h3/) is!
@@ -29,6 +28,10 @@ Consider what [Uber H3 Index](https://www.uber.com/blog/h3/) is!
     * Make caching feature configurable, so it will be possible to enable or disable it from application properties.
 * Run performance test once again with caching enabled.
     * Share your new results in the team channel. Explain the difference!
+* Add time metrics to involved endpoints and show the profit we get from caching with some graph.
+    * Disable caching and run the test
+    * Enable caching and run the test
+    * Take a screenshot showing the profit and share it to the team as a proof!
 
 ## Task 7
 
