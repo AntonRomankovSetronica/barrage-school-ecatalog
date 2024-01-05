@@ -43,6 +43,8 @@ public class MainScreenPerformanceTest {
     Mono<Report> roundTest(int scenarioIndex) {
         Report report = new Report();
         report.setScenarioIndex(scenarioIndex);
+        report.setOrders(1_000 * scenarioIndex);
+        report.setMainScreens(10_000 * scenarioIndex);
 
         return roundTestForScenario(new Scenario() {
             Instant ordersBegin;
@@ -50,7 +52,7 @@ public class MainScreenPerformanceTest {
 
             @Override
             public int getOrders() {
-                return 1_000 * scenarioIndex;
+                return report.getOrders();
             }
 
             @Override
@@ -71,7 +73,7 @@ public class MainScreenPerformanceTest {
 
             @Override
             public int getMainScreens() {
-                return 10_000 * scenarioIndex;
+                return report.getMainScreens();
             }
 
             @Override
