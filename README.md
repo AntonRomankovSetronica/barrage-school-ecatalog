@@ -2,6 +2,8 @@
 
 Educational Project, Barrage's Java School
 
+## Task 8
+
 ## Task 7
 
 Your Uncle goes mad and decide to create a mobile app for his catalog. So people will be able to search and order
@@ -12,12 +14,13 @@ We need to support his idea from backend perspective and introduce several new e
 ### What to do?
 
 * We need a new endpoint for making orders. Let's skip all this story with payment and say that to make an order we just
-  need to call some POST request. We only gonna fix following:
+  need to call some POST request. We only gonna state following:
+    * Order's endpoint will be `/e-catalog/api/v1/order`.
     * Every order should contain products from exactly one merchant.
     * Order should be able to contain multiple products and amounts.
     * Order should keep info about user who's made it.
     * Order should keep date/time when it was made.
-* You need to introduce new entity - POS (point of sail).
+* You need to introduce new entity - POS (point of sale).
     * POS should have GEO point (lat, lon).
     * Merchant can have more than one POS (let say Uncle has one POS right at his farm, and is opening another at
       neighbor village).
