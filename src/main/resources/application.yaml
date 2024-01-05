@@ -28,6 +28,7 @@ logging:
     net.barrage.school.java.ecatalog: DEBUG
 
 ecatalog:
+  fake: true
   products:
     sources:
       - name: Uncle

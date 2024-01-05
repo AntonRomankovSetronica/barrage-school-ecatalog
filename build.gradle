@@ -25,6 +25,7 @@ dependencies {
     implementation 'org.springframework.security:spring-security-oauth2-jose'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.projectreactor:reactor-core'
     runtimeOnly 'org.postgresql:postgresql'
 
     // Metrics

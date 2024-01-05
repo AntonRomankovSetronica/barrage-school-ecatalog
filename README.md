@@ -2,6 +2,37 @@
 
 Educational Project, Barrage's Java School
 
+## Task 8
+
+Lots of people begin to use our app, so we face performance issues. Let's try to fight with them using geo-caching!
+
+Consider main screen request from previous task. What is the most computational expensive part there?
+Ordering merchants by distance to customers cell-phones and ordering products by popularity look quite suspicious.
+Moreover, if there will be two customers staying 20 meters one from each other - it will be quite possible that they
+will get same main screen.
+
+How does it possible to cache main screen and not to calculate it on every request?
+Consider what [Uber H3 Index](https://www.uber.com/blog/h3/) is!
+
+### What to do?
+
+* Take a look at
+  following [performance test](src/test/java/net/barrage/school/java/ecatalog/app/MainScreenPerformanceTest.java) and
+  update it according to your own implementation!
+    * There are number of TODOs you have to pay your attention for.
+    * Disable [FakeController](src/main/java/net/barrage/school/java/ecatalog/web/FakeController.java) to avoid
+      conflicts.
+    * Run the test without caching and share your results in the team channel.
+* Implement caching using [Redis](https://www.baeldung.com/spring-boot-redis-cache)
+  and [Uber H3](https://github.com/uber/h3-java).
+    * Make caching feature configurable, so it will be possible to enable or disable it from application properties.
+* Run performance test once again with caching enabled.
+    * Share your new results in the team channel. Explain the difference!
+* Add time metrics to involved endpoints and show the profit we get from caching with some graph.
+    * Disable caching and run the test
+    * Enable caching and run the test
+    * Take a screenshot showing the profit and share it to the team as a proof!
+
 ## Task 7
 
 Your Uncle goes mad and decide to create a mobile app for his catalog. So people will be able to search and order
@@ -12,12 +43,13 @@ We need to support his idea from backend perspective and introduce several new e
 ### What to do?
 
 * We need a new endpoint for making orders. Let's skip all this story with payment and say that to make an order we just
-  need to call some POST request. We only gonna fix following:
+  need to call some POST request. We only gonna state following:
+    * Order's endpoint will be `/e-catalog/api/v1/order`.
     * Every order should contain products from exactly one merchant.
     * Order should be able to contain multiple products and amounts.
     * Order should keep info about user who's made it.
     * Order should keep date/time when it was made.
-* You need to introduce new entity - POS (point of sail).
+* You need to introduce new entity - POS (point of sale).
     * POS should have GEO point (lat, lon).
     * Merchant can have more than one POS (let say Uncle has one POS right at his farm, and is opening another at
       neighbor village).
@@ -47,7 +79,8 @@ We need to support his idea from backend perspective and introduce several new e
     * Mobile app will send customer's coordinates with query params (e.g. `?lat=1.234&lng=5.678`)
     * There should be exactly 3 merchants sorted by nearest POS (merchant who has the nearest POS should be the first &
       etc)
-        * PostGIS ([extension](https://github.com/postgis/docker-postgis), [distance calc example](https://copyprogramming.com/howto/how-can-i-get-distance-between-two-points-on-earth-from-postgis#postgres-calculate-distance-with-postgis), [docker](docker-compose.yaml#L7))
+        *
+      PostGIS ([extension](https://github.com/postgis/docker-postgis), [distance calc example](https://copyprogramming.com/howto/how-can-i-get-distance-between-two-points-on-earth-from-postgis#postgres-calculate-distance-with-postgis), [docker](docker-compose.yaml#L7))
     * There should be exactly 4 products in every merchant and they should be sorted by popularity in last N days (make
       this N configurable). First product will have the biggest number of orders it involves in during past N days.
     * Try to fetch all needed data with a single SQL request!
